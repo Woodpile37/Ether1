@@ -160,7 +160,7 @@ func RunPrecompiledContract(p PrecompiledContract, input []byte, suppliedGas uin
 // ECRECOVER implemented as a native contract.
 type ecrecover struct{}
 
-func (c *ecrecover) RequiredGas(input []byte) uint64 {
+func (c *ecrecover) RequiredGas(_ []byte) uint64 {
 	return params.EcrecoverGas
 }
 
@@ -431,7 +431,7 @@ func runBn256Add(input []byte) ([]byte, error) {
 type bn256AddIstanbul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bn256AddIstanbul) RequiredGas(input []byte) uint64 {
+func (c *bn256AddIstanbul) RequiredGas(_ []byte) uint64 {
 	return params.Bn256AddGasIstanbul
 }
 
@@ -444,7 +444,7 @@ func (c *bn256AddIstanbul) Run(input []byte) ([]byte, error) {
 type bn256AddByzantium struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bn256AddByzantium) RequiredGas(input []byte) uint64 {
+func (c *bn256AddByzantium) RequiredGas(_ []byte) uint64 {
 	return params.Bn256AddGasByzantium
 }
 
@@ -469,7 +469,7 @@ func runBn256ScalarMul(input []byte) ([]byte, error) {
 type bn256ScalarMulIstanbul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bn256ScalarMulIstanbul) RequiredGas(input []byte) uint64 {
+func (c *bn256ScalarMulIstanbul) RequiredGas(_ []byte) uint64 {
 	return params.Bn256ScalarMulGasIstanbul
 }
 
@@ -482,7 +482,7 @@ func (c *bn256ScalarMulIstanbul) Run(input []byte) ([]byte, error) {
 type bn256ScalarMulByzantium struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bn256ScalarMulByzantium) RequiredGas(input []byte) uint64 {
+func (c *bn256ScalarMulByzantium) RequiredGas(_ []byte) uint64 {
 	return params.Bn256ScalarMulGasByzantium
 }
 
@@ -630,7 +630,7 @@ var (
 type bls12381G1Add struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381G1Add) RequiredGas(input []byte) uint64 {
+func (c *bls12381G1Add) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381G1AddGas
 }
 
@@ -668,7 +668,7 @@ func (c *bls12381G1Add) Run(input []byte) ([]byte, error) {
 type bls12381G1Mul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381G1Mul) RequiredGas(input []byte) uint64 {
+func (c *bls12381G1Mul) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381G1MulGas
 }
 
@@ -761,7 +761,7 @@ func (c *bls12381G1MultiExp) Run(input []byte) ([]byte, error) {
 type bls12381G2Add struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381G2Add) RequiredGas(input []byte) uint64 {
+func (c *bls12381G2Add) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381G2AddGas
 }
 
@@ -799,7 +799,7 @@ func (c *bls12381G2Add) Run(input []byte) ([]byte, error) {
 type bls12381G2Mul struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381G2Mul) RequiredGas(input []byte) uint64 {
+func (c *bls12381G2Mul) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381G2MulGas
 }
 
@@ -971,7 +971,7 @@ func decodeBLS12381FieldElement(in []byte) ([]byte, error) {
 type bls12381MapG1 struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381MapG1) RequiredGas(input []byte) uint64 {
+func (c *bls12381MapG1) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381MapG1Gas
 }
 
@@ -1006,7 +1006,7 @@ func (c *bls12381MapG1) Run(input []byte) ([]byte, error) {
 type bls12381MapG2 struct{}
 
 // RequiredGas returns the gas required to execute the pre-compiled contract.
-func (c *bls12381MapG2) RequiredGas(input []byte) uint64 {
+func (c *bls12381MapG2) RequiredGas(_ []byte) uint64 {
 	return params.Bls12381MapG2Gas
 }
 

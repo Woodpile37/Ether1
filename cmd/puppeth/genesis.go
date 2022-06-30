@@ -95,7 +95,7 @@ type alethGenesisSpecLinearPricing struct {
 
 // newAlethGenesisSpec converts a go-ethereum genesis block into a Aleth-specific
 // chain specification format.
-func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSpec, error) {
+func newAlethGenesisSpec(_ string, genesis *core.Genesis) (*alethGenesisSpec, error) {
 	// Only ethash is currently supported between go-ethereum and aleth
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")
@@ -606,7 +606,7 @@ type pyEthereumGenesisSpec struct {
 
 // newPyEthereumGenesisSpec converts a go-ethereum genesis block into a Parity specific
 // chain specification format.
-func newPyEthereumGenesisSpec(network string, genesis *core.Genesis) (*pyEthereumGenesisSpec, error) {
+func newPyEthereumGenesisSpec(_ string, genesis *core.Genesis) (*pyEthereumGenesisSpec, error) {
 	// Only ethash is currently supported between go-ethereum and pyethereum
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")

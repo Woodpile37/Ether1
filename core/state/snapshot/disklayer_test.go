@@ -511,7 +511,7 @@ func TestDiskGeneratorPersistence(t *testing.T) {
 //
 // This test case is a tiny specialized case of TestDiskPartialMerge, which tests
 // some very specific cornercases that random tests won't ever trigger.
-func TestDiskMidAccountPartialMerge(t *testing.T) {
+func TestDiskMidAccountPartialMerge(_ *testing.T) {
 	// TODO(@karalabe) ?
 }
 

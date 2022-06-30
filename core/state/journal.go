@@ -174,7 +174,7 @@ func (ch suicideChange) dirtied() *common.Address {
 
 var ripemd = common.HexToAddress("0000000000000000000000000000000000000003")
 
-func (ch touchChange) revert(s *StateDB) {
+func (ch touchChange) revert(_ *StateDB) {
 }
 
 func (ch touchChange) dirtied() *common.Address {

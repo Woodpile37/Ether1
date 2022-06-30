@@ -122,17 +122,17 @@ func (dl *downloadTester) sync(id string, td *big.Int, mode SyncMode) error {
 }
 
 // HasHeader checks if a header is present in the testers canonical chain.
-func (dl *downloadTester) HasHeader(hash common.Hash, number uint64) bool {
+func (dl *downloadTester) HasHeader(hash common.Hash, _ uint64) bool {
 	return dl.GetHeaderByHash(hash) != nil
 }
 
 // HasBlock checks if a block is present in the testers canonical chain.
-func (dl *downloadTester) HasBlock(hash common.Hash, number uint64) bool {
+func (dl *downloadTester) HasBlock(hash common.Hash, _ uint64) bool {
 	return dl.GetBlockByHash(hash) != nil
 }
 
 // HasFastBlock checks if a block is present in the testers canonical chain.
-func (dl *downloadTester) HasFastBlock(hash common.Hash, number uint64) bool {
+func (dl *downloadTester) HasFastBlock(hash common.Hash, _ uint64) bool {
 	dl.lock.RLock()
 	defer dl.lock.RUnlock()
 
@@ -236,7 +236,7 @@ func (dl *downloadTester) FastSyncCommitHead(hash common.Hash) error {
 }
 
 // GetTd retrieves the block's total difficulty from the canonical chain.
-func (dl *downloadTester) GetTd(hash common.Hash, number uint64) *big.Int {
+func (dl *downloadTester) GetTd(hash common.Hash, _ uint64) *big.Int {
 	dl.lock.RLock()
 	defer dl.lock.RUnlock()
 
@@ -254,7 +254,7 @@ func (dl *downloadTester) getTd(hash common.Hash) *big.Int {
 }
 
 // InsertHeaderChain injects a new batch of headers into the simulated chain.
-func (dl *downloadTester) InsertHeaderChain(headers []*types.Header, checkFreq int) (i int, err error) {
+func (dl *downloadTester) InsertHeaderChain(headers []*types.Header, _ int) (i int, err error) {
 	dl.lock.Lock()
 	defer dl.lock.Unlock()
 	// Do a quick check, as the blockchain.InsertHeaderChain doesn't insert anything in case of errors
@@ -388,7 +388,7 @@ func (dl *downloadTester) SetHead(head uint64) error {
 }
 
 // Rollback removes some recently added elements from the chain.
-func (dl *downloadTester) Rollback(hashes []common.Hash) {
+func (dl *downloadTester) Rollback(_ []common.Hash) {
 }
 
 // newPeer registers a new block download source into the downloader.

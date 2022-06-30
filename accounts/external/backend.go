@@ -50,7 +50,7 @@ func NewExternalBackend(endpoint string) (*ExternalBackend, error) {
 	}, nil
 }
 
-func (eb *ExternalBackend) Subscribe(sink chan<- accounts.WalletEvent) event.Subscription {
+func (eb *ExternalBackend) Subscribe(_ chan<- accounts.WalletEvent) event.Subscription {
 	return event.NewSubscription(func(quit <-chan struct{}) error {
 		<-quit
 		return nil
@@ -97,7 +97,7 @@ func (api *ExternalSigner) Status() (string, error) {
 	return api.status, nil
 }
 
-func (api *ExternalSigner) Open(passphrase string) error {
+func (api *ExternalSigner) Open(_ string) error {
 	return fmt.Errorf("operation not supported on external signers")
 }
 
@@ -144,15 +144,15 @@ func (api *ExternalSigner) Contains(account accounts.Account) bool {
 	return false
 }
 
-func (api *ExternalSigner) Derive(path accounts.DerivationPath, pin bool) (accounts.Account, error) {
+func (api *ExternalSigner) Derive(_ accounts.DerivationPath, _ bool) (accounts.Account, error) {
 	return accounts.Account{}, fmt.Errorf("operation not supported on external signers")
 }
 
-func (api *ExternalSigner) SelfDerive(bases []accounts.DerivationPath, chain ethereum.ChainStateReader) {
+func (api *ExternalSigner) SelfDerive(_ []accounts.DerivationPath, _ ethereum.ChainStateReader) {
 	log.Error("operation SelfDerive not supported on external signers")
 }
 
-func (api *ExternalSigner) signHash(account accounts.Account, hash []byte) ([]byte, error) {
+func (api *ExternalSigner) signHash(_ accounts.Account, _ []byte) ([]byte, error) {
 	return []byte{}, fmt.Errorf("operation not supported on external signers")
 }
 
@@ -245,14 +245,14 @@ func (api *ExternalSigner) SignTx(account accounts.Account, tx *types.Transactio
 	return res.Tx, nil
 }
 
-func (api *ExternalSigner) SignTextWithPassphrase(account accounts.Account, passphrase string, text []byte) ([]byte, error) {
+func (api *ExternalSigner) SignTextWithPassphrase(_ accounts.Account, _ string, _ []byte) ([]byte, error) {
 	return []byte{}, fmt.Errorf("password-operations not supported on external signers")
 }
 
-func (api *ExternalSigner) SignTxWithPassphrase(account accounts.Account, passphrase string, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
+func (api *ExternalSigner) SignTxWithPassphrase(_ accounts.Account, _ string, _ *types.Transaction, _ *big.Int) (*types.Transaction, error) {
 	return nil, fmt.Errorf("password-operations not supported on external signers")
 }
-func (api *ExternalSigner) SignDataWithPassphrase(account accounts.Account, passphrase, mimeType string, data []byte) ([]byte, error) {
+func (api *ExternalSigner) SignDataWithPassphrase(_ accounts.Account, _, _ string, _ []byte) ([]byte, error) {
 	return nil, fmt.Errorf("password-operations not supported on external signers")
 }
 

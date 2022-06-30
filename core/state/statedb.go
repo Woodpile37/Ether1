@@ -47,12 +47,12 @@ var (
 
 type proofList [][]byte
 
-func (n *proofList) Put(key []byte, value []byte) error {
+func (n *proofList) Put(_ []byte, value []byte) error {
 	*n = append(*n, value)
 	return nil
 }
 
-func (n *proofList) Delete(key []byte) error {
+func (n *proofList) Delete(_ []byte) error {
 	panic("not supported")
 }
 

@@ -29,7 +29,7 @@ type keyStorePlain struct {
 	keysDirPath string
 }
 
-func (ks keyStorePlain) GetKey(addr common.Address, filename, auth string) (*Key, error) {
+func (ks keyStorePlain) GetKey(addr common.Address, filename, _ string) (*Key, error) {
 	fd, err := os.Open(filename)
 	if err != nil {
 		return nil, err
@@ -45,7 +45,7 @@ func (ks keyStorePlain) GetKey(addr common.Address, filename, auth string) (*Key
 	return key, nil
 }
 
-func (ks keyStorePlain) StoreKey(filename string, key *Key, auth string) error {
+func (ks keyStorePlain) StoreKey(filename string, key *Key, _ string) error {
 	content, err := json.Marshal(key)
 	if err != nil {
 		return err

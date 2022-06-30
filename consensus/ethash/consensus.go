@@ -46,21 +46,21 @@ var (
 	minerBlockReward          *big.Int = new(big.Int).Mul(big.NewInt(10), big.NewInt(1e+18))
 	masternodeBlockReward     *big.Int = big.NewInt(2e+18)
 	developmentBlockReward    *big.Int = big.NewInt(1e+18)
-	
+
 	FounderBurnAddress1 = common.HexToAddress("0x603a74A412367141D0ce61D5e77BF268F6B61983")
 	FounderBurnAddress2 = common.HexToAddress("0x34937717CdA3851e045cE29FeD8f4b4d02759c1c")
 	FounderBurnAddress3 = common.HexToAddress("0xE2c8cbEc30c8513888F7A95171eA836f8802d981")
-	
+
 	wEthoOldBridgeContractETH = common.HexToAddress("0x2edfef4716612b705993c73e69728beb6e28c57f")
 	wEthoOldBridgeContractBSC = common.HexToAddress("0x1f83d695924803c2461c664f5e49a88b679577f3")
-	DevelopmentAddress = common.HexToAddress("0xBA57dFe21F78F921F53B83fFE1958Bbab50F6b46")
-	UnWrapAddress = common.HexToAddress("0x68Ad2679a57606226b655C62Be7a89246CD15441")
-	NodeRewardAddress = common.HexToAddress("0x00C41297cCEbe446AAbc154F32b16aEDE14E50aB")
-	NewDevFundAmount,ok1 = new(big.Int).SetString("5000000000000000000000000",10)
-	wEthoTransferAmount,ok2 = new(big.Int).SetString("29627862503034528925546528",10)
+	DevelopmentAddress        = common.HexToAddress("0xBA57dFe21F78F921F53B83fFE1958Bbab50F6b46")
+	UnWrapAddress             = common.HexToAddress("0x68Ad2679a57606226b655C62Be7a89246CD15441")
+	NodeRewardAddress         = common.HexToAddress("0x00C41297cCEbe446AAbc154F32b16aEDE14E50aB")
+	NewDevFundAmount, ok1     = new(big.Int).SetString("5000000000000000000000000", 10)
+	wEthoTransferAmount, ok2  = new(big.Int).SetString("29627862503034528925546528", 10)
 
-	maxUncles                          = 2                // Maximum number of uncles allowed in a single block
-	allowedFutureBlockTimeSeconds = int64(15)         // Max seconds from current time allowed for blocks, before they're considered future blocks
+	maxUncles                     = 2         // Maximum number of uncles allowed in a single block
+	allowedFutureBlockTimeSeconds = int64(15) // Max seconds from current time allowed for blocks, before they're considered future blocks
 
 	// calcDifficultyEip3554 is the difficulty adjustment algorithm as specified by EIP 3554.
 	// It offsets the bomb a total of 9.7M blocks.
@@ -352,8 +352,8 @@ func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Heade
 	next := new(big.Int).Add(parent.Number, big1)
 	switch {
 	// case config.IsPhoenixFork(next):
-		// params.MinimumDifficulty = big.NewInt(1000000)
-		// return big.NewInt(1000000)
+	// params.MinimumDifficulty = big.NewInt(1000000)
+	// return big.NewInt(1000000)
 	case config.IsNewHorizon(next):
 		// Change minimum difficulty
 		params.MinimumDifficulty = big.NewInt(131072)
@@ -361,12 +361,12 @@ func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Heade
 	case config.IsLondon(next):
 		return calcDifficultyEip3554(time, parent)
 	case config.IsMuirGlacier(next):
-                if next.Cmp(big.NewInt(8150000)) > 0 {
-                        params.MinimumDifficulty = big.NewInt(200000000000)
-                } else {
-                        // this fixes invalid difficulty when syncing
-                        params.MinimumDifficulty = big.NewInt(131072)
-                }
+		if next.Cmp(big.NewInt(8150000)) > 0 {
+			params.MinimumDifficulty = big.NewInt(200000000000)
+		} else {
+			// this fixes invalid difficulty when syncing
+			params.MinimumDifficulty = big.NewInt(131072)
+		}
 		return calcDifficultyEip2384(time, parent)
 	case config.IsConstantinople(next):
 		return calcDifficultyConstantinople(time, parent)
@@ -664,7 +664,7 @@ func (ethash *Ethash) Prepare(chain consensus.ChainHeaderReader, header *types.H
 
 // Finalize implements consensus.Engine, accumulating the block and uncle rewards,
 // setting the final state on the header
-func (ethash *Ethash) Finalize(chain consensus.ChainHeaderReader, header *types.Header, state *state.StateDB, txs []*types.Transaction, uncles []*types.Header) {
+func (ethash *Ethash) Finalize(chain consensus.ChainHeaderReader, header *types.Header, state *state.StateDB, _ []*types.Transaction, uncles []*types.Header) {
 	// Accumulate any block and uncle rewards and commit the final state root
 	accumulateRewards(chain.Config(), state, header, uncles)
 	header.Root = state.IntermediateRoot(chain.Config().IsEIP158(header.Number))
@@ -773,7 +773,7 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 		blockReward = big.NewInt(0.3e+18)
 		masternodeReward = big.NewInt(0.5e+18)
 		developmentReward = big.NewInt(0.2e+18)
-	} else if (header.Number.Int64() >= 11000000) {
+	} else if header.Number.Int64() >= 11000000 {
 		blockReward = big.NewInt(0.3e+18)
 		masternodeReward = big.NewInt(0.55e+18)
 		developmentReward = big.NewInt(0.15e+18)
@@ -793,31 +793,31 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	}
 	state.AddBalance(header.Coinbase, reward)
 	// Development Fund Address
-	if (header.Number.Int64() < 8300000) {
+	if header.Number.Int64() < 8300000 {
 		state.AddBalance(common.HexToAddress("0xE2c8cbEc30c8513888F7A95171eA836f8802d981"), developmentReward)
 	} else {
 		if config.IsPhoenixFork(header.Number) {
-			state.AddBalance(DevelopmentAddress, developmentReward)	
+			state.AddBalance(DevelopmentAddress, developmentReward)
 		} else {
 			state.AddBalance(common.HexToAddress("0xBA57dFe21F78F921F53B83fFE1958Bbab50F6b46"), developmentReward)
 		}
 	}
-	
+
 	if header.Number.Cmp(config.PhoenixForkBlock) == 0 {
 		// Compensation Fund to wrappedETHO holders switching back to Mainnet.
-		state.AddBalance(UnWrapAddress, wEthoTransferAmount) // use development address for multisig security on the fundsss
+		state.AddBalance(UnWrapAddress, wEthoTransferAmount)   // use development address for multisig security on the fundsss
 		state.AddBalance(DevelopmentAddress, NewDevFundAmount) // new dev Fund
 
 		// Burn Old Bridge Contracts
-		state.SetBalance(wEthoOldBridgeContractETH,big.NewInt(0))
-		state.SetBalance(wEthoOldBridgeContractBSC,big.NewInt(0))
-		
+		state.SetBalance(wEthoOldBridgeContractETH, big.NewInt(0))
+		state.SetBalance(wEthoOldBridgeContractBSC, big.NewInt(0))
+
 		// Burn ETHO of Previous ETHO Holder
-		state.SetBalance(FounderBurnAddress1,big.NewInt(0))
-		state.SetBalance(FounderBurnAddress2,big.NewInt(0))
-		state.SetBalance(FounderBurnAddress3,big.NewInt(0))
+		state.SetBalance(FounderBurnAddress1, big.NewInt(0))
+		state.SetBalance(FounderBurnAddress2, big.NewInt(0))
+		state.SetBalance(FounderBurnAddress3, big.NewInt(0))
 	}
-	
+
 	// Masternode Fund address
 	if config.IsPhoenixFork(header.Number) {
 		state.AddBalance(NodeRewardAddress, masternodeReward)

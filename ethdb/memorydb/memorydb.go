@@ -164,13 +164,13 @@ func (db *Database) NewIterator(prefix []byte, start []byte) ethdb.Iterator {
 }
 
 // Stat returns a particular internal stat of the database.
-func (db *Database) Stat(property string) (string, error) {
+func (db *Database) Stat(_ string) (string, error) {
 	return "", errors.New("unknown property")
 }
 
 // Compact is not supported on a memory database, but there's no need either as
 // a memory database doesn't waste space anyway.
-func (db *Database) Compact(start []byte, limit []byte) error {
+func (db *Database) Compact(_ []byte, _ []byte) error {
 	return nil
 }
 

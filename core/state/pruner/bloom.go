@@ -32,8 +32,8 @@ import (
 // contract code hash into a 64 bit mini hash.
 type stateBloomHasher []byte
 
-func (f stateBloomHasher) Write(p []byte) (n int, err error) { panic("not implemented") }
-func (f stateBloomHasher) Sum(b []byte) []byte               { panic("not implemented") }
+func (f stateBloomHasher) Write(_ []byte) (n int, err error) { panic("not implemented") }
+func (f stateBloomHasher) Sum(_ []byte) []byte               { panic("not implemented") }
 func (f stateBloomHasher) Reset()                            { panic("not implemented") }
 func (f stateBloomHasher) BlockSize() int                    { panic("not implemented") }
 func (f stateBloomHasher) Size() int                         { return 8 }
@@ -105,7 +105,7 @@ func (bloom *stateBloom) Commit(filename, tempname string) error {
 }
 
 // Put implements the KeyValueWriter interface. But here only the key is needed.
-func (bloom *stateBloom) Put(key []byte, value []byte) error {
+func (bloom *stateBloom) Put(key []byte, _ []byte) error {
 	// If the key length is not 32bytes, ensure it's contract code
 	// entry with new scheme.
 	if len(key) != common.HashLength {
@@ -121,7 +121,7 @@ func (bloom *stateBloom) Put(key []byte, value []byte) error {
 }
 
 // Delete removes the key from the key-value data store.
-func (bloom *stateBloom) Delete(key []byte) error { panic("not supported") }
+func (bloom *stateBloom) Delete(_ []byte) error { panic("not supported") }
 
 // Contain is the wrapper of the underlying contains function which
 // reports whether the key is contained.

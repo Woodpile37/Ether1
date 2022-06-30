@@ -85,7 +85,7 @@ func (e *gfP12) Frobenius(a *gfP12, pool *bnPool) *gfP12 {
 }
 
 // FrobeniusP2 computes (xω+y)^p² = x^p² ω·ξ^((p²-1)/6) + y^p²
-func (e *gfP12) FrobeniusP2(a *gfP12, pool *bnPool) *gfP12 {
+func (e *gfP12) FrobeniusP2(a *gfP12, _ *bnPool) *gfP12 {
 	e.x.FrobeniusP2(a.x)
 	e.x.MulGFP(e.x, xiToPSquaredMinus1Over6)
 	e.y.FrobeniusP2(a.y)
@@ -124,7 +124,7 @@ func (e *gfP12) Mul(a, b *gfP12, pool *bnPool) *gfP12 {
 	return e
 }
 
-func (e *gfP12) MulScalar(a *gfP12, b *gfP6, pool *bnPool) *gfP12 {
+func (e *gfP12) MulScalar(_ *gfP12, b *gfP6, pool *bnPool) *gfP12 {
 	e.x.Mul(e.x, b, pool)
 	e.y.Mul(e.y, b, pool)
 	return e

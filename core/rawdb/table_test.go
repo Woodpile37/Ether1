@@ -31,7 +31,7 @@ type testReplayer struct {
 	dels [][]byte
 }
 
-func (r *testReplayer) Put(key []byte, value []byte) error {
+func (r *testReplayer) Put(key []byte, _ []byte) error {
 	r.puts = append(r.puts, key)
 	return nil
 }

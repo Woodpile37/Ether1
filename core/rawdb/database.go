@@ -80,17 +80,17 @@ type nofreezedb struct {
 }
 
 // HasAncient returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) HasAncient(kind string, number uint64) (bool, error) {
+func (db *nofreezedb) HasAncient(_ string, _ uint64) (bool, error) {
 	return false, errNotSupported
 }
 
 // Ancient returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) Ancient(kind string, number uint64) ([]byte, error) {
+func (db *nofreezedb) Ancient(_ string, _ uint64) ([]byte, error) {
 	return nil, errNotSupported
 }
 
 // ReadAncients returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) ReadAncients(kind string, start, max, maxByteSize uint64) ([][]byte, error) {
+func (db *nofreezedb) ReadAncients(_ string, _, _, _ uint64) ([][]byte, error) {
 	return nil, errNotSupported
 }
 
@@ -100,17 +100,17 @@ func (db *nofreezedb) Ancients() (uint64, error) {
 }
 
 // AncientSize returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) AncientSize(kind string) (uint64, error) {
+func (db *nofreezedb) AncientSize(_ string) (uint64, error) {
 	return 0, errNotSupported
 }
 
 // AppendAncient returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) AppendAncient(number uint64, hash, header, body, receipts, td []byte) error {
+func (db *nofreezedb) AppendAncient(_ uint64, _, _, _, _, _ []byte) error {
 	return errNotSupported
 }
 
 // TruncateAncients returns an error as we don't have a backing chain freezer.
-func (db *nofreezedb) TruncateAncients(items uint64) error {
+func (db *nofreezedb) TruncateAncients(_ uint64) error {
 	return errNotSupported
 }
 
