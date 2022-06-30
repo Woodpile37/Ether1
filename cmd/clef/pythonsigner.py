@@ -129,7 +129,7 @@ class StdIOHandler():
                 }
 
     @public
-    def ShowError(self,message = {}):
+    def ShowError(self,message = None):
         """
         Example request:
 
@@ -138,12 +138,14 @@ class StdIOHandler():
         :param message: to show
         :return: nothing
         """
+        if message is None:
+            message = {}
         if 'text' in message.keys():
             sys.stderr.write("Error: {}\n".format( message['text']))
         return
 
     @public
-    def ShowInfo(self,message = {}):
+    def ShowInfo(self,message = None):
         """
         Example request
         {"jsonrpc":"2.0","method":"ShowInfo","params":{"message":"Testing 'ShowInfo'"},"id":0}
@@ -151,6 +153,8 @@ class StdIOHandler():
         :param message: to display
         :return:nothing
         """
+        if message is None:
+            message = {}
 
         if 'text' in message.keys():
             sys.stdout.write("Error: {}\n".format( message['text']))
