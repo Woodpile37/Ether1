@@ -128,8 +128,8 @@ type diffLayer struct {
 // event into a 64 bit mini hash.
 type destructBloomHasher common.Hash
 
-func (h destructBloomHasher) Write(p []byte) (n int, err error) { panic("not implemented") }
-func (h destructBloomHasher) Sum(b []byte) []byte               { panic("not implemented") }
+func (h destructBloomHasher) Write(_ []byte) (n int, err error) { panic("not implemented") }
+func (h destructBloomHasher) Sum(_ []byte) []byte               { panic("not implemented") }
 func (h destructBloomHasher) Reset()                            { panic("not implemented") }
 func (h destructBloomHasher) BlockSize() int                    { panic("not implemented") }
 func (h destructBloomHasher) Size() int                         { return 8 }
@@ -142,8 +142,8 @@ func (h destructBloomHasher) Sum64() uint64 {
 // hash into a 64 bit mini hash.
 type accountBloomHasher common.Hash
 
-func (h accountBloomHasher) Write(p []byte) (n int, err error) { panic("not implemented") }
-func (h accountBloomHasher) Sum(b []byte) []byte               { panic("not implemented") }
+func (h accountBloomHasher) Write(_ []byte) (n int, err error) { panic("not implemented") }
+func (h accountBloomHasher) Sum(_ []byte) []byte               { panic("not implemented") }
 func (h accountBloomHasher) Reset()                            { panic("not implemented") }
 func (h accountBloomHasher) BlockSize() int                    { panic("not implemented") }
 func (h accountBloomHasher) Size() int                         { return 8 }
@@ -156,8 +156,8 @@ func (h accountBloomHasher) Sum64() uint64 {
 // hash into a 64 bit mini hash.
 type storageBloomHasher [2]common.Hash
 
-func (h storageBloomHasher) Write(p []byte) (n int, err error) { panic("not implemented") }
-func (h storageBloomHasher) Sum(b []byte) []byte               { panic("not implemented") }
+func (h storageBloomHasher) Write(_ []byte) (n int, err error) { panic("not implemented") }
+func (h storageBloomHasher) Sum(_ []byte) []byte               { panic("not implemented") }
 func (h storageBloomHasher) Reset()                            { panic("not implemented") }
 func (h storageBloomHasher) BlockSize() int                    { panic("not implemented") }
 func (h storageBloomHasher) Size() int                         { return 8 }

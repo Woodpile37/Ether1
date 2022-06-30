@@ -671,7 +671,7 @@ func (w *Wallet) SelfDerive(bases []accounts.DerivationPath, chain ethereum.Chai
 // about which fields or actions are needed. The user may retry by providing
 // the needed details via SignDataWithPassphrase, or by other means (e.g. unlock
 // the account in a keystore).
-func (w *Wallet) SignData(account accounts.Account, mimeType string, data []byte) ([]byte, error) {
+func (w *Wallet) SignData(account accounts.Account, _ string, data []byte) ([]byte, error) {
 	return w.signHash(account, crypto.Keccak256(data))
 }
 
@@ -713,7 +713,7 @@ func (w *Wallet) SignTx(account accounts.Account, tx *types.Transaction, chainID
 //
 // It looks up the account specified either solely via its address contained within,
 // or optionally with the aid of any location metadata from the embedded URL field.
-func (w *Wallet) SignDataWithPassphrase(account accounts.Account, passphrase, mimeType string, data []byte) ([]byte, error) {
+func (w *Wallet) SignDataWithPassphrase(account accounts.Account, passphrase, _ string, data []byte) ([]byte, error) {
 	return w.signHashWithPassphrase(account, passphrase, crypto.Keccak256(data))
 }
 

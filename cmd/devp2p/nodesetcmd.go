@@ -199,7 +199,7 @@ func andFilter(args []string) (nodeFilter, error) {
 	return f, nil
 }
 
-func trueFilter(args []string) (nodeFilter, error) {
+func trueFilter(_ []string) (nodeFilter, error) {
 	return func(n nodeJSON) bool { return true }, nil
 }
 
@@ -254,7 +254,7 @@ func ethFilter(args []string) (nodeFilter, error) {
 	return f, nil
 }
 
-func lesFilter(args []string) (nodeFilter, error) {
+func lesFilter(_ []string) (nodeFilter, error) {
 	f := func(n nodeJSON) bool {
 		var les struct {
 			Tail []rlp.RawValue `rlp:"tail"`
@@ -264,7 +264,7 @@ func lesFilter(args []string) (nodeFilter, error) {
 	return f, nil
 }
 
-func snapFilter(args []string) (nodeFilter, error) {
+func snapFilter(_ []string) (nodeFilter, error) {
 	f := func(n nodeJSON) bool {
 		var snap struct {
 			Tail []rlp.RawValue `rlp:"tail"`

@@ -143,7 +143,7 @@ func TestSnapshot(t *testing.T) {
 	}
 }
 
-func TestSnapshotEmpty(t *testing.T) {
+func TestSnapshotEmpty(_ *testing.T) {
 	s := newStateTest()
 	s.state.RevertToSnapshot(s.state.Snapshot())
 }

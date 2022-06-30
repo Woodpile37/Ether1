@@ -137,11 +137,11 @@ func NewAccessListTracer(acl types.AccessList, from, to common.Address, precompi
 	}
 }
 
-func (a *AccessListTracer) CaptureStart(env *EVM, from common.Address, to common.Address, create bool, input []byte, gas uint64, value *big.Int) {
+func (a *AccessListTracer) CaptureStart(_ *EVM, _ common.Address, _ common.Address, _ bool, _ []byte, _ uint64, _ *big.Int) {
 }
 
 // CaptureState captures all opcodes that touch storage or addresses and adds them to the accesslist.
-func (a *AccessListTracer) CaptureState(env *EVM, pc uint64, op OpCode, gas, cost uint64, scope *ScopeContext, rData []byte, depth int, err error) {
+func (a *AccessListTracer) CaptureState(_ *EVM, _ uint64, op OpCode, _, _ uint64, scope *ScopeContext, _ []byte, _ int, _ error) {
 	stack := scope.Stack
 	if (op == SLOAD || op == SSTORE) && stack.len() >= 1 {
 		slot := common.Hash(stack.data[stack.len()-1].Bytes32())
@@ -161,10 +161,10 @@ func (a *AccessListTracer) CaptureState(env *EVM, pc uint64, op OpCode, gas, cos
 	}
 }
 
-func (*AccessListTracer) CaptureFault(env *EVM, pc uint64, op OpCode, gas, cost uint64, scope *ScopeContext, depth int, err error) {
+func (*AccessListTracer) CaptureFault(_ *EVM, _ uint64, _ OpCode, _, _ uint64, _ *ScopeContext, _ int, _ error) {
 }
 
-func (*AccessListTracer) CaptureEnd(output []byte, gasUsed uint64, t time.Duration, err error) {}
+func (*AccessListTracer) CaptureEnd(_ []byte, _ uint64, _ time.Duration, _ error) {}
 
 // AccessList returns the current accesslist maintained by the tracer.
 func (a *AccessListTracer) AccessList() types.AccessList {

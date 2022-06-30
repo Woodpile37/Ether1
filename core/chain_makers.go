@@ -308,8 +308,8 @@ func (cr *fakeChainReader) Config() *params.ChainConfig {
 	return cr.config
 }
 
-func (cr *fakeChainReader) CurrentHeader() *types.Header                            { return nil }
-func (cr *fakeChainReader) GetHeaderByNumber(number uint64) *types.Header           { return nil }
-func (cr *fakeChainReader) GetHeaderByHash(hash common.Hash) *types.Header          { return nil }
-func (cr *fakeChainReader) GetHeader(hash common.Hash, number uint64) *types.Header { return nil }
-func (cr *fakeChainReader) GetBlock(hash common.Hash, number uint64) *types.Block   { return nil }
+func (cr *fakeChainReader) CurrentHeader() *types.Header                    { return nil }
+func (cr *fakeChainReader) GetHeaderByNumber(_ uint64) *types.Header        { return nil }
+func (cr *fakeChainReader) GetHeaderByHash(_ common.Hash) *types.Header     { return nil }
+func (cr *fakeChainReader) GetHeader(_ common.Hash, _ uint64) *types.Header { return nil }
+func (cr *fakeChainReader) GetBlock(_ common.Hash, _ uint64) *types.Block   { return nil }

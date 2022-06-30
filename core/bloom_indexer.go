@@ -58,7 +58,7 @@ func NewBloomIndexer(db ethdb.Database, size, confirms uint64) *ChainIndexer {
 
 // Reset implements core.ChainIndexerBackend, starting a new bloombits index
 // section.
-func (b *BloomIndexer) Reset(ctx context.Context, section uint64, lastSectionHead common.Hash) error {
+func (b *BloomIndexer) Reset(_ context.Context, section uint64, _ common.Hash) error {
 	gen, err := bloombits.NewGenerator(uint(b.size))
 	b.gen, b.section, b.head = gen, section, common.Hash{}
 	return err
@@ -66,7 +66,7 @@ func (b *BloomIndexer) Reset(ctx context.Context, section uint64, lastSectionHea
 
 // Process implements core.ChainIndexerBackend, adding a new header's bloom into
 // the index.
-func (b *BloomIndexer) Process(ctx context.Context, header *types.Header) error {
+func (b *BloomIndexer) Process(_ context.Context, header *types.Header) error {
 	b.gen.AddBloom(uint(header.Number.Uint64()-b.section*b.size), header.Bloom)
 	b.head = header.Hash()
 	return nil
@@ -87,6 +87,6 @@ func (b *BloomIndexer) Commit() error {
 }
 
 // Prune returns an empty error since we don't support pruning here.
-func (b *BloomIndexer) Prune(threshold uint64) error {
+func (b *BloomIndexer) Prune(_ uint64) error {
 	return nil
 }

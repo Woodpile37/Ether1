@@ -141,7 +141,7 @@ func (h *Hash) SetBytes(b []byte) {
 }
 
 // Generate implements testing/quick.Generator.
-func (h Hash) Generate(rand *rand.Rand, size int) reflect.Value {
+func (h Hash) Generate(rand *rand.Rand, _ int) reflect.Value {
 	m := rand.Intn(len(h))
 	for i := len(h) - 1; i > m; i-- {
 		h[i] = byte(rand.Uint32())

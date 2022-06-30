@@ -652,6 +652,6 @@ func (hc *HeaderChain) Engine() consensus.Engine { return hc.engine }
 
 // GetBlock implements consensus.ChainReader, and returns nil for every input as
 // a header chain does not have blocks available for retrieval.
-func (hc *HeaderChain) GetBlock(hash common.Hash, number uint64) *types.Block {
+func (hc *HeaderChain) GetBlock(_ common.Hash, _ uint64) *types.Block {
 	return nil
 }
