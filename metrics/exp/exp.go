@@ -18,7 +18,7 @@ type exp struct {
 	registry   metrics.Registry
 }
 
-func (exp *exp) expHandler(w http.ResponseWriter, r *http.Request) {
+func (exp *exp) expHandler(w http.ResponseWriter, _ *http.Request) {
 	// load our variables into expvar
 	exp.syncToExpvar()
 

@@ -204,7 +204,7 @@ func (NilSample) Mean() float64 { return 0.0 }
 func (NilSample) Min() int64 { return 0 }
 
 // Percentile is a no-op.
-func (NilSample) Percentile(p float64) float64 { return 0.0 }
+func (NilSample) Percentile(_ float64) float64 { return 0.0 }
 
 // Percentiles is a no-op.
 func (NilSample) Percentiles(ps []float64) []float64 {
@@ -224,7 +224,7 @@ func (NilSample) StdDev() float64 { return 0.0 }
 func (NilSample) Sum() int64 { return 0 }
 
 // Update is a no-op.
-func (NilSample) Update(v int64) {}
+func (NilSample) Update(_ int64) {}
 
 // Values is a no-op.
 func (NilSample) Values() []int64 { return []int64{} }

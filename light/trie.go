@@ -49,7 +49,7 @@ type odrDatabase struct {
 	backend OdrBackend
 }
 
-func (db *odrDatabase) OpenTrie(root common.Hash) (state.Trie, error) {
+func (db *odrDatabase) OpenTrie(_ common.Hash) (state.Trie, error) {
 	return &odrTrie{db: db, id: db.id}, nil
 }
 
@@ -143,11 +143,11 @@ func (t *odrTrie) NodeIterator(startkey []byte) trie.NodeIterator {
 	return newNodeIterator(t, startkey)
 }
 
-func (t *odrTrie) GetKey(sha []byte) []byte {
+func (t *odrTrie) GetKey(_ []byte) []byte {
 	return nil
 }
 
-func (t *odrTrie) Prove(key []byte, fromLevel uint, proofDb ethdb.KeyValueWriter) error {
+func (t *odrTrie) Prove(_ []byte, _ uint, _ ethdb.KeyValueWriter) error {
 	return errors.New("not implemented, needs client/server interface split")
 }
 

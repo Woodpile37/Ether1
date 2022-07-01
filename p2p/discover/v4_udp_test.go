@@ -617,7 +617,7 @@ func (c *dgramPipe) WriteToUDP(b []byte, to *net.UDPAddr) (n int, err error) {
 }
 
 // ReadFromUDP just hangs until the pipe is closed.
-func (c *dgramPipe) ReadFromUDP(b []byte) (n int, addr *net.UDPAddr, err error) {
+func (c *dgramPipe) ReadFromUDP(_ []byte) (n int, addr *net.UDPAddr, err error) {
 	<-c.closing
 	return 0, nil, io.EOF
 }

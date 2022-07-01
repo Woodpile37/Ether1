@@ -66,7 +66,7 @@ func (odr *testOdr) Database() ethdb.Database {
 
 var ErrOdrDisabled = errors.New("ODR disabled")
 
-func (odr *testOdr) Retrieve(ctx context.Context, req OdrRequest) error {
+func (odr *testOdr) Retrieve(_ context.Context, req OdrRequest) error {
 	if odr.disable {
 		return ErrOdrDisabled
 	}
@@ -101,7 +101,7 @@ type odrTestFn func(ctx context.Context, db ethdb.Database, bc *core.BlockChain,
 
 func TestOdrGetBlockLes2(t *testing.T) { testChainOdr(t, 1, odrGetBlock) }
 
-func odrGetBlock(ctx context.Context, db ethdb.Database, bc *core.BlockChain, lc *LightChain, bhash common.Hash) ([]byte, error) {
+func odrGetBlock(ctx context.Context, _ ethdb.Database, bc *core.BlockChain, lc *LightChain, bhash common.Hash) ([]byte, error) {
 	var block *types.Block
 	if bc != nil {
 		block = bc.GetBlockByHash(bhash)
@@ -249,7 +249,7 @@ func testChainGen(i int, block *core.BlockGen) {
 	}
 }
 
-func testChainOdr(t *testing.T, protocol int, fn odrTestFn) {
+func testChainOdr(t *testing.T, _ int, fn odrTestFn) {
 	var (
 		sdb   = rawdb.NewMemoryDatabase()
 		ldb   = rawdb.NewMemoryDatabase()

@@ -77,7 +77,7 @@ type NilGaugeFloat64 struct{}
 func (NilGaugeFloat64) Snapshot() GaugeFloat64 { return NilGaugeFloat64{} }
 
 // Update is a no-op.
-func (NilGaugeFloat64) Update(v float64) {}
+func (NilGaugeFloat64) Update(_ float64) {}
 
 // Value is a no-op.
 func (NilGaugeFloat64) Value() float64 { return 0.0 }

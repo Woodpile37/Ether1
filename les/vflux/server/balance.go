@@ -616,7 +616,7 @@ func (n *nodeBalance) balanceToPriority(now mclock.AbsTime, b balance, capacity 
 // priorityToBalance converts a target priority to a requested balance value.
 // If the priority is negative, then minimal negative balance is returned;
 // otherwise the minimal positive balance is returned.
-func (n *nodeBalance) priorityToBalance(priority int64, capacity uint64) (uint64, uint64) {
+func (n *nodeBalance) priorityToBalance(priority int64, _ uint64) (uint64, uint64) {
 	if priority > 0 {
 		return uint64(priority) * n.capacity, 0
 	}

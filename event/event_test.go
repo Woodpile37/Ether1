@@ -25,7 +25,7 @@ import (
 
 type testEvent int
 
-func TestSubCloseUnsub(t *testing.T) {
+func TestSubCloseUnsub(_ *testing.T) {
 	// the point of this test is **not** to panic
 	var mux TypeMux
 	mux.Stop()

@@ -69,7 +69,7 @@ func (NilEWMA) Snapshot() EWMA { return NilEWMA{} }
 func (NilEWMA) Tick() {}
 
 // Update is a no-op.
-func (NilEWMA) Update(n int64) {}
+func (NilEWMA) Update(_ int64) {}
 
 // StandardEWMA is the standard implementation of an EWMA and tracks the number
 // of uncounted events and processes them on each tick.  It uses the

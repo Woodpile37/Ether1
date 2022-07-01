@@ -259,7 +259,7 @@ func TestEmptyBlocks(t *testing.T) {
 // blocks that become known and peers that make reservations and deliveries.
 // disabled since it's not really a unit-test, but can be executed to test
 // some more advanced scenarios
-func XTestDelivery(t *testing.T) {
+func XTestDelivery(_ *testing.T) {
 	// the outside network, holding blocks
 	blo, rec := makeChain(128, 0, genesis, false)
 	world := newNetwork()

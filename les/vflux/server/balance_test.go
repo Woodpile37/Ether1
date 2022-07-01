@@ -34,9 +34,9 @@ import (
 
 type zeroExpirer struct{}
 
-func (z zeroExpirer) SetRate(now mclock.AbsTime, rate float64)                 {}
-func (z zeroExpirer) SetLogOffset(now mclock.AbsTime, logOffset utils.Fixed64) {}
-func (z zeroExpirer) LogOffset(now mclock.AbsTime) utils.Fixed64               { return 0 }
+func (z zeroExpirer) SetRate(_ mclock.AbsTime, _ float64)            {}
+func (z zeroExpirer) SetLogOffset(_ mclock.AbsTime, _ utils.Fixed64) {}
+func (z zeroExpirer) LogOffset(_ mclock.AbsTime) utils.Fixed64       { return 0 }
 
 type balanceTestClient struct{}
 

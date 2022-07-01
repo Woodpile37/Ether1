@@ -68,7 +68,7 @@ func CaptureRuntimeMemStats(r Registry, d time.Duration) {
 // Be very careful with this because runtime.ReadMemStats calls the C
 // functions runtime·semacquire(&runtime·worldsema) and runtime·stoptheworld()
 // and that last one does what it says on the tin.
-func CaptureRuntimeMemStatsOnce(r Registry) {
+func CaptureRuntimeMemStatsOnce(_ Registry) {
 	t := time.Now()
 	runtime.ReadMemStats(&memStats) // This takes 50-200us.
 	runtimeMetrics.ReadMemStats.UpdateSince(t)

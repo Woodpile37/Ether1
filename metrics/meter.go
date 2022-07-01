@@ -114,7 +114,7 @@ type MeterSnapshot struct {
 func (m *MeterSnapshot) Count() int64 { return m.count }
 
 // Mark panics.
-func (*MeterSnapshot) Mark(n int64) {
+func (*MeterSnapshot) Mark(_ int64) {
 	panic("Mark called on a MeterSnapshot")
 }
 
@@ -147,7 +147,7 @@ type NilMeter struct{}
 func (NilMeter) Count() int64 { return 0 }
 
 // Mark is a no-op.
-func (NilMeter) Mark(n int64) {}
+func (NilMeter) Mark(_ int64) {}
 
 // Rate1 is a no-op.
 func (NilMeter) Rate1() float64 { return 0.0 }
