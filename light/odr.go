@@ -190,4 +190,4 @@ type TxStatusRequest struct {
 }
 
 // StoreResult stores the retrieved data in local database
-func (req *TxStatusRequest) StoreResult(db ethdb.Database) {}
+func (req *TxStatusRequest) StoreResult(_ ethdb.Database) {}

@@ -43,7 +43,7 @@ func (c *ppTestClient) priority(cap uint64) int64 {
 	return int64(c.balance / cap)
 }
 
-func (c *ppTestClient) estimatePriority(cap uint64, addBalance int64, future, bias time.Duration, update bool) int64 {
+func (c *ppTestClient) estimatePriority(cap uint64, _ int64, _, _ time.Duration, _ bool) int64 {
 	return int64(c.balance / cap)
 }
 

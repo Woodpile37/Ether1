@@ -132,7 +132,7 @@ func (NilHistogram) Mean() float64 { return 0.0 }
 func (NilHistogram) Min() int64 { return 0 }
 
 // Percentile is a no-op.
-func (NilHistogram) Percentile(p float64) float64 { return 0.0 }
+func (NilHistogram) Percentile(_ float64) float64 { return 0.0 }
 
 // Percentiles is a no-op.
 func (NilHistogram) Percentiles(ps []float64) []float64 {
@@ -152,7 +152,7 @@ func (NilHistogram) StdDev() float64 { return 0.0 }
 func (NilHistogram) Sum() int64 { return 0 }
 
 // Update is a no-op.
-func (NilHistogram) Update(v int64) {}
+func (NilHistogram) Update(_ int64) {}
 
 // Variance is a no-op.
 func (NilHistogram) Variance() float64 { return 0.0 }

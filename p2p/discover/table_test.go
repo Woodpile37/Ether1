@@ -289,7 +289,7 @@ type closeTest struct {
 	N      int
 }
 
-func (*closeTest) Generate(rand *rand.Rand, size int) reflect.Value {
+func (*closeTest) Generate(rand *rand.Rand, _ int) reflect.Value {
 	t := &closeTest{
 		Self:   gen(enode.ID{}, rand).(enode.ID),
 		Target: gen(enode.ID{}, rand).(enode.ID),

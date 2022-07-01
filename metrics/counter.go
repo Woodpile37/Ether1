@@ -104,10 +104,10 @@ func (NilCounter) Clear() {}
 func (NilCounter) Count() int64 { return 0 }
 
 // Dec is a no-op.
-func (NilCounter) Dec(i int64) {}
+func (NilCounter) Dec(_ int64) {}
 
 // Inc is a no-op.
-func (NilCounter) Inc(i int64) {}
+func (NilCounter) Inc(_ int64) {}
 
 // Snapshot is a no-op.
 func (NilCounter) Snapshot() Counter { return NilCounter{} }

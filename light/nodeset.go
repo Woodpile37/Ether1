@@ -142,13 +142,13 @@ func (n NodeList) NodeSet() *NodeSet {
 }
 
 // Put stores a new node at the end of the list
-func (n *NodeList) Put(key []byte, value []byte) error {
+func (n *NodeList) Put(_ []byte, value []byte) error {
 	*n = append(*n, value)
 	return nil
 }
 
 // Delete panics as there's no reason to remove a node from the list.
-func (n *NodeList) Delete(key []byte) error {
+func (n *NodeList) Delete(_ []byte) error {
 	panic("not supported")
 }
 

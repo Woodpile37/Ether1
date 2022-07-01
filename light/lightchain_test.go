@@ -274,7 +274,7 @@ func (odr *dummyOdr) Database() ethdb.Database {
 	return odr.db
 }
 
-func (odr *dummyOdr) Retrieve(ctx context.Context, req OdrRequest) error {
+func (odr *dummyOdr) Retrieve(_ context.Context, _ OdrRequest) error {
 	return nil
 }
 

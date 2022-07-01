@@ -91,7 +91,7 @@ func (NilTimer) Mean() float64 { return 0.0 }
 func (NilTimer) Min() int64 { return 0 }
 
 // Percentile is a no-op.
-func (NilTimer) Percentile(p float64) float64 { return 0.0 }
+func (NilTimer) Percentile(_ float64) float64 { return 0.0 }
 
 // Percentiles is a no-op.
 func (NilTimer) Percentiles(ps []float64) []float64 {

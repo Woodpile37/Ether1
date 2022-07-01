@@ -160,7 +160,7 @@ func newTAP(out io.Writer, numTests int) *tapOutput {
 	}
 }
 
-func (t *tapOutput) testStart(name string) {
+func (t *tapOutput) testStart(_ string) {
 	t.counter++
 }
 

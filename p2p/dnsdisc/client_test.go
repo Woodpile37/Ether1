@@ -294,7 +294,7 @@ func TestIteratorEmptyTree(t *testing.T) {
 }
 
 // updateSomeNodes applies ENR updates to some of the given nodes.
-func updateSomeNodes(keySeed int64, nodes []*enode.Node) {
+func updateSomeNodes(_ int64, nodes []*enode.Node) {
 	keys := testKeys(nodesSeed1, len(nodes))
 	for i, n := range nodes[:len(nodes)/2] {
 		r := n.Record()
@@ -451,7 +451,7 @@ func (mr mapResolver) add(m map[string]string) {
 	}
 }
 
-func (mr mapResolver) LookupTXT(ctx context.Context, name string) ([]string, error) {
+func (mr mapResolver) LookupTXT(_ context.Context, name string) ([]string, error) {
 	if record, ok := mr[name]; ok {
 		return []string{record}, nil
 	}

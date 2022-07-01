@@ -88,7 +88,7 @@ func (i *poolTestPeer) InactiveAllowance() time.Duration {
 	return 0
 }
 
-func (i *poolTestPeer) UpdateCapacity(capacity uint64, requested bool) {
+func (i *poolTestPeer) UpdateCapacity(capacity uint64, _ bool) {
 	i.cap = capacity
 }
 

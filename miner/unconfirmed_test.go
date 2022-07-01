@@ -26,10 +26,10 @@ import (
 // returns nil for any requested headers.
 type noopChainRetriever struct{}
 
-func (r *noopChainRetriever) GetHeaderByNumber(number uint64) *types.Header {
+func (r *noopChainRetriever) GetHeaderByNumber(_ uint64) *types.Header {
 	return nil
 }
-func (r *noopChainRetriever) GetBlockByNumber(number uint64) *types.Block {
+func (r *noopChainRetriever) GetBlockByNumber(_ uint64) *types.Block {
 	return nil
 }
 

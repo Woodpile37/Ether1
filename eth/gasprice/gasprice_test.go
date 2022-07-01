@@ -41,7 +41,7 @@ type testBackend struct {
 	pending bool // pending block available
 }
 
-func (b *testBackend) HeaderByNumber(ctx context.Context, number rpc.BlockNumber) (*types.Header, error) {
+func (b *testBackend) HeaderByNumber(_ context.Context, number rpc.BlockNumber) (*types.Header, error) {
 	if number > testHead {
 		return nil, nil
 	}
@@ -58,7 +58,7 @@ func (b *testBackend) HeaderByNumber(ctx context.Context, number rpc.BlockNumber
 	return b.chain.GetHeaderByNumber(uint64(number)), nil
 }
 
-func (b *testBackend) BlockByNumber(ctx context.Context, number rpc.BlockNumber) (*types.Block, error) {
+func (b *testBackend) BlockByNumber(_ context.Context, number rpc.BlockNumber) (*types.Block, error) {
 	if number > testHead {
 		return nil, nil
 	}
@@ -75,7 +75,7 @@ func (b *testBackend) BlockByNumber(ctx context.Context, number rpc.BlockNumber)
 	return b.chain.GetBlockByNumber(uint64(number)), nil
 }
 
-func (b *testBackend) GetReceipts(ctx context.Context, hash common.Hash) (types.Receipts, error) {
+func (b *testBackend) GetReceipts(_ context.Context, hash common.Hash) (types.Receipts, error) {
 	return b.chain.GetReceiptsByHash(hash), nil
 }
 
@@ -91,7 +91,7 @@ func (b *testBackend) ChainConfig() *params.ChainConfig {
 	return b.chain.Config()
 }
 
-func (b *testBackend) SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription {
+func (b *testBackend) SubscribeChainHeadEvent(_ chan<- core.ChainHeadEvent) event.Subscription {
 	return nil
 }
 

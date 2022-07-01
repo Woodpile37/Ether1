@@ -40,7 +40,7 @@ func (self *testTxRelay) Send(txs types.Transactions) {
 	self.send <- len(txs)
 }
 
-func (self *testTxRelay) NewHead(head common.Hash, mined []common.Hash, rollback []common.Hash) {
+func (self *testTxRelay) NewHead(_ common.Hash, mined []common.Hash, _ []common.Hash) {
 	m := len(mined)
 	if m != 0 {
 		self.mined <- m

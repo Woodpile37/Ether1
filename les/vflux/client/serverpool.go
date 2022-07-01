@@ -582,8 +582,8 @@ func (s *ServerPool) API() *PrivateClientAPI {
 
 type dummyIdentity enode.ID
 
-func (id dummyIdentity) Verify(r *enr.Record, sig []byte) error { return nil }
-func (id dummyIdentity) NodeAddr(r *enr.Record) []byte          { return id[:] }
+func (id dummyIdentity) Verify(_ *enr.Record, _ []byte) error { return nil }
+func (id dummyIdentity) NodeAddr(_ *enr.Record) []byte        { return id[:] }
 
 // DialNode replaces the given enode with a locally generated one containing the ENR
 // stored in the sfiLocalAddress field if present. This workaround ensures that nodes

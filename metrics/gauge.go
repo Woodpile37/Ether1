@@ -87,13 +87,13 @@ type NilGauge struct{}
 func (NilGauge) Snapshot() Gauge { return NilGauge{} }
 
 // Update is a no-op.
-func (NilGauge) Update(v int64) {}
+func (NilGauge) Update(_ int64) {}
 
 // Dec is a no-op.
-func (NilGauge) Dec(i int64) {}
+func (NilGauge) Dec(_ int64) {}
 
 // Inc is a no-op.
-func (NilGauge) Inc(i int64) {}
+func (NilGauge) Inc(_ int64) {}
 
 // Value is a no-op.
 func (NilGauge) Value() int64 { return 0 }

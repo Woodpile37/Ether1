@@ -465,7 +465,7 @@ func TestDBExpiration(t *testing.T) {
 
 // This test checks that expiration works when discovery v5 data is present
 // in the database.
-func TestDBExpireV5(t *testing.T) {
+func TestDBExpireV5(_ *testing.T) {
 	db, _ := OpenDB("")
 	defer db.Close()
 

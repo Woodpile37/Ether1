@@ -410,7 +410,7 @@ func (q *queue) stats() []interface{} {
 
 // ReserveHeaders reserves a set of headers for the given peer, skipping any
 // previously failed batches.
-func (q *queue) ReserveHeaders(p *peerConnection, count int) *fetchRequest {
+func (q *queue) ReserveHeaders(p *peerConnection, _ int) *fetchRequest {
 	q.lock.Lock()
 	defer q.lock.Unlock()
 
