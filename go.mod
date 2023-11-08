@@ -15,7 +15,7 @@ require (
 	github.com/btcsuite/btcd v0.22.1
 	github.com/cespare/cp v0.1.0
 	github.com/cloudflare/cloudflare-go v0.14.0
-	github.com/consensys/gnark-crypto v0.4.1-0.20210426202927-39ac3d4b3f1f
+	github.com/consensys/gnark-crypto v0.12.1
 	github.com/davecgh/go-spew v1.1.1
 	github.com/deckarep/golang-set v0.0.0-20180603214616-504e848d77ea
 	github.com/deepmap/oapi-codegen v1.8.2 // indirect
@@ -72,14 +72,14 @@ require (
 	github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible
 	github.com/smartystreets/assertions v1.0.1 // indirect
 	github.com/status-im/keycard-go v0.0.0-20190316090335-8537d3370df4
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.8.2
 	github.com/syndtr/goleveldb v1.0.1-0.20210305035536-64b5b1c73954
 	github.com/tklauser/go-sysconf v0.3.5 // indirect
 	github.com/tyler-smith/go-bip39 v1.0.1-0.20181017060643-dbb3b84ba2ef
-	golang.org/x/crypto v0.0.0-20220518034528-6f7dac969898
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/sys v0.0.0-20220517195934-5e4e11fc645e
-	golang.org/x/text v0.3.7
+	golang.org/x/crypto v0.10.0
+	golang.org/x/sync v0.1.0
+	golang.org/x/sys v0.9.0
+	golang.org/x/text v0.10.0
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce
 	gopkg.in/olebedev/go-duktape.v3 v3.0.0-20200619000410-60c24ae608a6
